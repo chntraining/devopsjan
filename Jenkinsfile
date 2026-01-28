@@ -20,8 +20,9 @@ pipeline {
                   always {
                          junit '**/target/surefire-reports/*.xml'
                          echo 'Test Run succeeded!'          
-                }
-        }
+					}
+				}
+		}
         stage('Build Project') {
             steps {
                echo "Building my JAVA project"
@@ -50,12 +51,3 @@ pipeline {
         }
     }
 }
-
-
-
-
-
-
-
-
-

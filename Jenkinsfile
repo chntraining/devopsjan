@@ -26,7 +26,7 @@ pipeline {
         stage('Build Project') {
             steps {
                echo "Building my JAVA project"
-               bat 'mvn clean package' 
+               bat 'mvn clean package -DskipTests' 
             }
         }
         stage('Test The Appln') {

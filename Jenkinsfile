@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
      tools{
@@ -29,14 +30,21 @@ pipeline {
                bat 'mvn clean package -DskipTests' 
             }
         }
-        stage('Test The Appln') {
+        stage(' Build the Docker Image') {
             steps {
-               echo "Testing my JAVA project"
+               echo "Build the Docker Image for mvn project"
+               bat 'docker build -t mvnproj:1.0 .'
             }
         }
-        stage('Deploy the project') {
+         stage('Push Docker Image to DockerHub') {
             steps {
-                echo "Project is getting Deployed"
+               echo "Push Docker Image to DockerHub for mvn project"
+            }
+        }
+       
+        stage('Deploy the project using Container') {
+            steps {
+                echo "Running Java Application"
             }
         }
     }
